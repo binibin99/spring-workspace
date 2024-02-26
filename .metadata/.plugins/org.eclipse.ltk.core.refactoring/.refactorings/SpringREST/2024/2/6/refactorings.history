@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;SpringREST/note/Untitled 1&apos; to &apos;03_Jquery.txt&apos;" description="Rename resource &apos;Untitled 1&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="note/Untitled 1" name="03_Jquery.txt" stamp="1707266818043" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;SpringREST/src/main/webapp/WEB-INF/views/jquery/NewFile.jsp&apos; to &apos;index.jsp&apos;" description="Rename resource &apos;NewFile.jsp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/WEB-INF/views/jquery/NewFile.jsp" name="index.jsp" stamp="1707266928842" updateReferences="true"/>
+</session>

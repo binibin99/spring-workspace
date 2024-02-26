@@ -1,0 +1,11 @@
+03_JQuery.txt
+
+
+# JQuery
+
+ - 자바스크립트를 좀 더 짧고 효율적으로 쓰고자하는 라이브러리
+ - document.querySelector('#id') 	=>>>   $('id')
+ - button1.addEventListener('click')	==>>>	button1.on('click')
+ - 자바스크립트를 사용하면서 단어가 너무 길어서 불편했던 점들을 개선하기 위한 라이브러리
+ 
+# JQu

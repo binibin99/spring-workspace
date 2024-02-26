@@ -1,0 +1,15 @@
+console.log('hi');
+
+const div1 = document.querySelector('#div1');
+const div2 = $('#div2');
+
+console.log(div1);
+console.log(div2);
+
+
+div2.addClass('btn');
+div2.addClass('warning');
+div2.click((e) => {
+    console.log(e);
+    console.log('div2 clicked@@');
+});

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="SpringBorad"/>
+<aop-project name="map_test"/>
+<aop-project name="springmvc"/>
+<aop-project name="SpringREST"/>
+<aop-project name="royal_project"/>
+<aop-project name="SpringDatabase"/>
+</aop-reference-model>

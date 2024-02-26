@@ -1,0 +1,71 @@
+06_Lombok.txt
+
+#Lombok
+
+ - 간단한 어노테이션 추가로 자바빈 객체를 자동으로 완성해주는 라이브러리
+ - 맨날하는 반복작업을 안 할 수 있다
+ 
+# Lombok 설치
+
+ - 구글에 lombok 검색 및 다운로드
+ - 실행 후 원하는 IDE의 위치 선택해 설치
+ - IDE 재시작
+ - pom.xml에 롬복의 dependency 등록
+ 
+# Lombok의 이노테이션들
+ 
+ @Getter
+ 
+  - 클래스 위에 붙이는 경우 해당 클래스의 모든 Getter를 자동으로 생성한다
+  - 필드 위에 붙이는 경우 해당 필드만의 Getter 생성한다
+  
+ @Setter
+ 
+  - 클래스 위에 붙이는 경우 해당 클래스의 모든 Setter를 자동으로 생성한다
+  - 필드 위에 붙이는 경우 해당 필드만의 Setter 생성한다
+  
+ @ToString
+ 
+ - 해당 클래스의 toString()을 자동으로 생성한다
+ 
+
+ @AllArgsConstructor 
+ 
+ - 모든 필드값을 포함한 생성자를 자동으로 생성한다
+ 
+ @NoArgsConstructor
+ 
+ - 기본 생성자를 자동으로 생성한다
+ 
+ @RequiredArgsConstructor
+ 
+ - @NonNull이노테이션이 붙은 필드만 포함한 생성자를 자동으로 생성한다
+ 
+ @NonNull 
+ 
+ - 이 어노미테이션이 붙어있으면 생성자 또는 Setter에서 자동으로 Null체크를 함께 생성해준다
+ - 해당 필드에 null이 들어갈 때 예외 처리할 수 있도록 익셉션을 발생시켜준다
+ 
+ @EqualsAndHashCode
+ 
+ - 해당 클래스의 equals()와 hashCode()를 정해진 방식대로 자동 구현한다
+ - equals() : 해당 클래스의 모든 필드값이 일치하면 true
+ - hashCode() : 래당 클래스의 모든  필드값을 반영하여 일정한 값을 생성
+ 
+ @Data
+ 
+ - @Getter
+ - @Setter
+ - @ToString
+ - @EqualsAndHashCode
+ - @RequiredArgsConstructor
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

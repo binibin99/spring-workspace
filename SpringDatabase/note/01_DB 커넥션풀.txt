@@ -1,0 +1,43 @@
+01_DB 커넥션풀.txt
+
+# DBCP (Database Connection Pool)
+
+	- DB로 작업을 수행할때마다 새로운 DB연결을 생성하는 것이 낭비이기 때문에
+	  연결들을 미리 생성해놓고 가져다 쓰는 객체
+	- 커넥션 풀을 사용하면 DB와의 연결을 생성하고 닫는 과정이 서버 프로그램을 처음켤때만
+	  발생하기 때문에 서버 성능이 크게 향상된다
+	- 한가할때는 일정량의 연결을 유지하다가 접속이 몰릴때 새로운 연결을 더 늘려서 사용하고
+	  나중에 다시 한가해지면 연결을 최소한으로 유지하는 등의 설정이 가능하다
+	  
+# 유명한 Java DBCP의 라이브러리의 종류
+
+	- Apache Commons DBCP
+	- Tomcat-JDBC
+	- HikariCP
+	- ...
+	
+	#HikariConfig / Hikari Datasource 객체 자바로 사용해보기
+	
+		HikariConfig config = new HikariConfig();
+		config.setJdbcUrl("jdbc:oracle:thin:@localhost:1521:XE");
+		config.setUsername("hr");
+		config.setPassword("1234");
+		config.addDataSourceProperty("driverClassName", "oracle.jdbc.driver.OracleDriver");
+		config.addDataSourceProperty("cachePrepStmts", "true");
+		config.addDataSourceProperty("prepStmtCacheSize", "250");
+		config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
+		
+		// 설정 객체를 전달하여 커넥션 풀 객체를 생성
+		HikariDataSource ds = new HikariDataSource(config);
+		
+		#같은 내용을 스프링 빈으로 등록해보기
+		
+		<bean id = "hikaryConfig" class="com.zaxxer.hikari.HikariConfig">
+			<property name="driverClassName" value= "oracle.jdbc.driver.OracleDriver"/>
+			<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:XE" />
+			<property name="username" value="hr"/>
+			<property name="password" value="1234" />
+		</bean>	
+		<bean id="hikariDataSource" class="com.zaxxer.hikari.HikariDataSource">
+			<constructor-arg ref="hikariConfig"/>
+		</bean>

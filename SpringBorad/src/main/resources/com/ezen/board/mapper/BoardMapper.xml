@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ezen.board.mapper.BoardMapper">
+	<select id="getAll" resultType="com.ezen.board.dto.BoardDTO">
+		SELECT * FROM myboard ORDER BY
+		board_id DESC
+	</select>
+	<select id="getAllwithReplyCount"
+		resultType="com.ezen.board.dto.BoardDTO">
+		SELECT
+		b.*,
+		(SELECT count(reply_id)
+		FROM myreply r WHERE
+		b.board_id = r.board_id)
+		AS reply_count FROM myboard b ORDER BY
+		board_id DESC
+	</select>
+	<select id="get" resultType="com.ezen.board.dto.BoardDTO">
+		SELECT * FROM myboard WHERE
+		board_id=#{board_id}
+	</select>
+	<!-- keyProperty: 전달한 DTO에 방금 insert 또는 update했을때의 키값을 넣어주는 mybatis 옵션 -->
+	<insert id="insert" parameterType="com.ezen.board.dto.BoardDTO">
+		<selectKey resultType="Integer" keyProperty="board_id"
+			order="BEFORE">
+			SELECT myboard_id_seq.nextval FROM dual
+		</selectKey>
+		INSERT INTO
+		myboard(
+		board_id,
+		board_title,
+		board_content,
+		board_password,
+		board_writer)
+		VALUES(
+		#{board_id},
+		#{board_title},
+		#{board_content},
+		#{board_password},
+		#{board_writer})
+	</insert>
+
+	<delete id="delete" parameterType="com.ezen.board.dto.BoardDTO">
+			DELETE FROM myboard WHERE board_id=?
+	</delete>
+</mapper>

@@ -1,0 +1,60 @@
+03_프로젝트 계층 분리.txt
+
+
+# 프로젝트 계층
+
+ - 프로젝트를 구성하는 소스 코드들을 게층별로 분리하여 작성하는 것
+ - 화면 계층 (Presentation Layer)
+ - 비즈니스 계층 (Business Layer)
+ - 영속 계층 (Persistence Layer)
+ - 게층을 분리하여 코드를 작성하면 재사용성이 좋아진다
+ 
+# 화면 계층
+
+ - 프로그램 실행시 화면에 보여지는 코드를 작성하는 계층
+ 
+# 비지니스 계층
+
+ - 고객의 요구사항에 대한 내용(비즈니스 로직)을 구현하는 계층
+ - 웹 서비스에서는 하나의 요청이 한 번에 여러개의 비즈니스 로직을 필요로하는 경우도 있고
+   하나의 비즈니스 로직이 다양한 요청에서 활용되는 경우도 있기 때문에 소스 코드의 분리가 필요하다
+   
+ 
+# 영속 계층
+
+ - 저장되어있는 데이터(파일,DB 등)를 꺼내오는 작업을 구현하는 계층
+ - 하나의 비즈니스 로직이 여러곳의 데이터를 요구하는 경우도 있고
+   하나의 데이터 꺼내는 기능이 여러곳에서 활용될 수도 있기 때문에 소스 코드의 분리가 필요하다
+   
+# 웹 프로젝트에ㅔ서 패키지를 나누는 방식
+ 
+ - 프로젝트 규마거 작은 경우
+ 
+  컨트롤러, 비즈니스 계층, 영속 계층, DTO를 구분할 수 있도록 패키지를 작성한다
+  
+  ex ) com.pompany.pizzasho.controller.MenuContoller
+  	com.pompany.pizzasho.controller.MemberContoller
+  	com.pompany.pizzasho.controller.OrderContoller
+  	com.pompany.pizzasho.controller.MenuService
+  	com.pompany.pizzasho.controller.MemberService
+ 	com.pompany.pizzasho.controller.OrderService
+ 	com.pompany.pizzasho.controller.MenuMapper
+ 	com.pompany.pizzasho.controller.MemberMapper
+ 	com.pompany.pizzasho.controller.OrderMapper
+ 	com.pompany.pizzasho.controller.PizzaDTO
+ 	com.pompany.pizzasho.controller.MemberDTO
+ 	
+ - 프로젝트 규모가 큰 경우
+ 
+  우선 비즈니스 단위 별로 패키지 구분을 한 뒤 다시 내부에서 각 계층을 구분한다
+  
+  com.company.pizzashop.member.controller
+  com.company.pizzashop.member.service
+  com.company.pizzashop.member.mapper
+  com.company.pizzashop.member.dto
+  com.company.pizzashop.menu.controller
+  com.company.pizzashop.menu.service
+  com.company.pizzashop.menu.mapper
+  com.company.pizzashop.menu.dto
+ 	
+ 	

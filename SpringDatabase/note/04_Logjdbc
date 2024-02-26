@@ -1,0 +1,40 @@
+04_Leg4jdbc.txt
+
+# Log4jdbc
+
+ - jdbc에서 발생하는 작업들을 로그로 직어주는 라이브러리
+ - DB에 관련된 디버깅이 매우 수얼해진다
+ 
+
+ # 적용 순서
+  
+  1. pom.xml에 등록
+  
+  	<dependency>
+		<groupId>org.bgee.log4jdbc-log4j2</groupId>
+		<artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
+		<version>1.16</version>
+	</dependency>
+	
+  2. driverClassName, jdbcUrl 변경
+  
+  	<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
+	<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:XE" />
+	
+  3. resources에 log4jdbc.log4j2.properties 파일 추가
+  
+   파일명: log4jdbc.log4j2.properties
+   파일내용: log4jdbc.spylogdelegator.name=net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator
+   
+  4. log4j.xml에 원하는 logger를 추가하여 사용
+  
+  jdbc.sqlonly - SQL만 추가하는 로거
+  jdbc.sqltiming - SQL과 해당 SQL의 실행시간을 함께 추가하는 로거
+  jdbc.audit - ResultSet을 제외한 모든 JDBC관련 호출을 추가하는 로거, 매우 방대함. 
+  			   평소에는 사용하기 보다는 JDBC가 문제를 일으키는 경우 사용해볼만 함.
+  jdbc.resultset - ResultSet에 대한 모든 호출이 추가되는 로거. 양이 매우 방대함.
+  jdbc.resultsettable - ResultSet을 테이블 형식으로 추가해주는 로거. 
+  						어떤 값을 읽지 않았는지 표시해준다.
+  jdbc.connection - 연결이 open되고 close되는 것을 표시해준다. 
+  					연결이 끊어지지 않고 남아있는 경우를 찾아낼 때 굉장히 유용하다.
+  

@@ -1,0 +1,61 @@
+02_Mybatis.txt
+
+#Mybatis
+
+- 개발자는 쿼리문만 적으면 알아서 DB에서 데이터를 꺼내오는 프레임워크
+- 거의 모든 JDBC 관련 코드를 자동으로 생성해준다
+- 개발자는 사용할 쿼리문의 종류와 쿼리문의 내용만 작성하면 된다
+
+# 필요한 의존성
+
+- mybatis
+- mybatis-spring
+- spring-jdbc
+
+# 적용 순서
+
+ 1. 원하는 DBCP로 DataSource를 생성한다 (ex: HikariDataSource)
+ 
+ 2. 생성한 DataSource 객체를 전달해 SqlSessionFactoryBean 객체를 생성한다.
+ 
+	 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="hikariDataSource"/>
+ 	 </bean>
+ 	 
+ 3. <mybatis-spring:scan> 기능으로 Mapper들이 위치할 패키지를 지정한다
+   (※ mybatis-spring의 버전 2.0.7을 사용)
+ 
+   <mybatis-spring:scan base-package="com.ezen.springdb.mapper"/>
+
+   
+# Mybatis Mapper
+
+ - Mybatis는 Mapper 인터페이스만 보고도 자동으로 jdbc관련 코드를 모두 생성해준다
+ - 영향을 미치는 것은 리턴타입, 쿼리문, 쿼리문의 종류이다
+ - 어노테이션 방식의 Mapper와 XML방식의 Mapper가 있다
+ 
+# 어노테이션 방식의 Mapper
+
+ @Select(query)
+ @Insert(query)
+ @Delete(query)
+ @Update(query)
+  
+ - @Select로 조회하는 데이터가 여러 행인 경우 List<dto>타입으로 결과를 얻어온다
+ - @Select로 조회하는 데이터가 한 행인 경우 dto타입으로 결과를 얻어온다
+ - 쿼리문에 파라미터가 필요한 경우 #{name}으로 사용하고 @Param{"name"}으로 지정해준다
+ - 매개변수로 dto를 넘기는 경우 파라미터의 이름을 속성 이름과 동일하게 사용하면 
+   별다른 매핑없이 알아서 진행된다
+ - 더 세부적인 문법 내용은 마이바티스 홈페이지에 잘 나와있다
+ 
+ 
+# XML방식의 Mapper
+
+ 1. Mapper 인터페이스를 생성한다 (메서드만 정의하고 어노테이션은 달지 않는다)
+ 2. resources 밑에 해당 Mapper 인터페이스가 속한 패키지 경로와 똑같은 경로로 폴더를 생성한다
+    (폴더를 한번에 생성하면 버그가 발생 할 수 있음)
+ 3. 해당 폴더에 Mapper 인터페이스와 동일한 이름의 Mapper.xml을 생성한다
+ 4. 해당 XML파일의 형식은 마이바티스 공식 홈페이지 문서를 참조한다
+
+ 
+ 

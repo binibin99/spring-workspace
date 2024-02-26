@@ -1,0 +1,19 @@
+03_JQuery.txt
+
+
+# JQuery
+
+ - 자바스크립트를 좀 더 짧고 효율적으로 쓰고자하는 라이브러리
+ - document.querySelector('#id') 	=>>>   $('id')
+ - button1.addEventListener('click')	==>>>	button1.on('click')
+ - 자바스크립트를 사용하면서 단어가 너무 길어서 불편했던 점들을 개선하기 위한 라이브러리
+ 
+# JQuery CDN
+
+ - https://releases.jquery.com/
+ - http://code.jquery.com/jquery-3.7.1.min.js
+ - uncompressed : 보기 좋게 들여쓰기가 잘 되어있는 버전
+ - minified : 파일 자체의 용량을 줄이기 위해 변수명 및 들여쓰기가 최소화 된 버전
+ - slim : 꼭 필요한 기능만 넣은 버전
+ - slim minified : 꼭 필요한 기능만 포함 + minified
+ 

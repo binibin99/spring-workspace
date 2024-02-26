@@ -1,0 +1,25 @@
+package com.ezen.springrest.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.ezen.springrest.dto.EmployeeDTO;
+
+@RequestMapping("/jquery")
+@Controller
+public class JQuerySampleController {
+
+	@GetMapping("/")
+	public String jQueryHome() {
+		return "jquery/index";
+	}
+	
+	@ResponseBody
+	@GetMapping("/employee/{emp_id}")
+	public EmployeeDTO getEmployee() {
+		
+	}
+	
+}
